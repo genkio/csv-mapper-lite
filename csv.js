@@ -1,5 +1,7 @@
 'use strict'
 
+const cloneArray = require('./utils').cloneArray
+
 module.exports = class Csv {
   constructor(data, options) {
     if (!data || typeof data !== 'string') {
@@ -21,10 +23,11 @@ module.exports = class Csv {
     try {
       let dataArray = data.split(options.endOfLineSym)
       if (!options.noHeader) {
-        this.header = getHeader(dataArray, options.separator)
+        this.header = getHeader(cloneArray(dataArray), options.separator)
+        dataArray.shift()
       }
       if (options.shiftFirstRow) { dataArray.shift() }
-      this.rows = getRows(dataArray, options.separator)
+      this.rows = getRows(cloneArray(dataArray), options.separator)
       this.csv = this.header ? [ this.header.join(options.separator) ] : []
       this.rules = options.rules
     } catch (err) {
@@ -34,8 +37,8 @@ module.exports = class Csv {
 }
 
 function getHeader(data, sep) {
-  let header = data.shift().split(sep)
-  return trim(header)
+  let header = data[0].split(sep)
+  return trim(cloneArray(header))
 }
 
 function getRows(data, sep) {
@@ -44,7 +47,7 @@ function getRows(data, sep) {
     return !row.split(sep).every(cell => !cell)
   })
   return rows.map(row => {
-    return trim(row.split(sep)).join(',')
+    return trim(cloneArray(row.split(sep))).join(',')
   })
 }
 

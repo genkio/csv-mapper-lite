@@ -29,7 +29,7 @@ test('it should have no header if noHeader option is set to true', t => {
   t.falsy(csv.header)
 })
 
-test('it should remove first row if shiftFirstRow option is et to true', t => {
+test('it should remove first row if shiftFirstRow option is set to true', t => {
   const csv = new Csv(mockCsvData, { shiftFirstRow: true })
   t.is(csv.rows.length, 0)
 })
