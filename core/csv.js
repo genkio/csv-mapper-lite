@@ -1,6 +1,7 @@
 'use strict'
 
-const cloneArray = require('./utils').cloneArray
+const cloneArray = require('../misc/utils').cloneArray
+const DEFAULT_OPTIONS = require('../misc/constants').DEFAULT_OPTIONS
 
 module.exports = class Csv {
   constructor(data, options) {
@@ -10,18 +11,10 @@ module.exports = class Csv {
     if (options && typeof options !== 'object') {
       throw new TypeError(`Invalid options, options should be type object, got ${typeof options}`)
     }
-
-    const defaultOptions = {
-      separator: ',',
-      endOfLineSym: '\n',
-      noHeader: false,
-      shiftFirstRow: false,
-      rules: {}
-    }
-    options = Object.assign(defaultOptions, options)
+    options = Object.assign({}, DEFAULT_OPTIONS, options)
 
     try {
-      let dataArray = data.split(options.endOfLineSym)
+      let dataArray = data.split(options.newLine)
       if (!options.noHeader) {
         this.header = getHeader(cloneArray(dataArray), options.separator)
         dataArray.shift()

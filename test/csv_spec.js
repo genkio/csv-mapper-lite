@@ -1,7 +1,7 @@
 'use strict'
 
 const test = require('ava')
-const Csv = require('../csv')
+const Csv = require('../core/csv')
 const mockCsvData = 'col1,,col2,col3,,\n,1,2,3,,,\n'
 const mockCsvDataWithoutHeader = '1,2,3\n'
 const mockCsvDataWithEmptyRows = 'col1,col2,col3,\n,,\n1,,2,3\n,,\n,,\n,,'

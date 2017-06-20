@@ -4,7 +4,9 @@
   "description": "A node.js module for processing csv data",
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ignore-path .gitignore **/*.js",
-    "test": "ava test/*_spec.js"
+    "test": "ava test/*_spec.js",
+    "test-debug": "node --inspect --debug-brk node_modules/ava/profile.js test/csv_spec.js",
+    "test-watch": "npm test -- --watch"
   },
   "main": "index.js",
   "repository": "git@github.com:j1wu/csv-utils.git",
