@@ -1,7 +1,7 @@
 {
-  "name": "csv-utils",
+  "name": "csv-mapper-lite",
   "version": "1.0.0",
-  "description": "A node.js module for processing csv data",
+  "description": "A node.js library for parsing and mapping csv string into pre-defined format.",
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ignore-path .gitignore **/*.js",
     "test": "ava test/*_spec.js",
@@ -9,7 +9,7 @@
     "test-watch": "npm test -- --watch"
   },
   "main": "index.js",
-  "repository": "git@github.com:j1wu/csv-utils.git",
+  "repository": "git@github.com:j1wu/csv-mapper-lite.git",
   "author": "j1wu <ji.wu@outlook.com>",
   "license": "MIT",
   "devDependencies": {
