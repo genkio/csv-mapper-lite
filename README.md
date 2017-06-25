@@ -1,2 +1,2 @@
-# csv-utils
-> A node.js module for processing csv data
+# csv-mapper
+> A node.js module for parsing and mapping csv into pre-defined format

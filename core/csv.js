@@ -16,11 +16,12 @@ module.exports = class Csv {
     try {
       let dataArray = data.split(options.newLine)
       if (!options.noHeader) {
-        this.header = getHeader(cloneArray(dataArray), options.separator)
+        this.header = getHeader(cloneArray(dataArray), options)
         dataArray.shift()
       }
       if (options.shiftFirstRow) { dataArray.shift() }
-      this.rows = getRows(cloneArray(dataArray), options.separator)
+      this.rows = getRows(cloneArray(dataArray), options)
+      if (options.dropLastRow) { this.rows.pop() }
       this.csv = this.header ? [ this.header.join(options.separator) ] : []
       this.rules = options.rules
     } catch (err) {
@@ -29,18 +30,22 @@ module.exports = class Csv {
   }
 }
 
-function getHeader(data, sep) {
-  let header = data[0].split(sep)
-  return trim(cloneArray(header))
+function getHeader(data, options) {
+  let header = data[0].split(options.separator)
+  return options.trimTrailing
+    ? trim(cloneArray(header))
+    : cloneArray(header)
 }
 
-function getRows(data, sep) {
+function getRows(data, options) {
   let rows = data.filter(row => {
     // remove rows with no data
-    return !row.split(sep).every(cell => !cell)
+    return !row.split(options.separator).every(cell => !cell)
   })
   return rows.map(row => {
-    return trim(cloneArray(row.split(sep))).join(',')
+    let rowArray = cloneArray(row.split(options.separator))
+    rowArray = options.trimTrailing ? trim(rowArray) : rowArray
+    return rowArray.join(',')
   })
 }
 

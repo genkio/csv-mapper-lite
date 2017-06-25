@@ -5,5 +5,7 @@ module.exports.DEFAULT_OPTIONS = {
   newLine: '\n',
   noHeader: false,
   shiftFirstRow: false,
-  rules: {}
+  rules: {},
+  trimTrailing: false,
+  dropLastRow: false
 }
