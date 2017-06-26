@@ -1,3 +1,5 @@
+'use strict'
+
 const Csv = require('./csv')
 const getColLabel = require('../misc/utils').getColLabel
 
