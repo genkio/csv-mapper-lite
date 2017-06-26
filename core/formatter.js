@@ -38,6 +38,7 @@ function createRowContext(row) {
 }
 
 function cleanUpCell(cell) {
+  if (!cell) { return '' }
   return cell.replace(/\t|\n|\r/g, '')
 }
 

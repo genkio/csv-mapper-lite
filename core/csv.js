@@ -11,23 +11,31 @@ module.exports = class Csv {
     if (options && typeof options !== 'object') {
       throw new TypeError(`Invalid options, options should be type object, got ${typeof options}`)
     }
-    options = Object.assign({}, DEFAULT_OPTIONS, options)
 
+    options = Object.assign({}, DEFAULT_OPTIONS, options)
     try {
-      let dataArray = data.split(options.newLine)
-      if (!options.noHeader) {
-        this.header = getHeader(cloneArray(dataArray), options)
-        dataArray.shift()
-      }
-      if (options.shiftFirstRow) { dataArray.shift() }
-      this.rows = getRows(cloneArray(dataArray), options)
-      if (options.dropLastRow) { this.rows.pop() }
-      this.csv = this.header ? [ this.header.join(options.separator) ] : []
-      this.rules = options.rules
+      const props = process(data.split(options.newLine), options)
+      Object.assign(this, props)
     } catch (err) {
       throw new Error(`Failed to parse data: ${err.toString()}`)
     }
   }
+}
+
+function process(data, options) {
+  let props = { header: null, rows: null, csv: null, rules: null }
+
+  if (!options.noHeader) {
+    props.header = getHeader(cloneArray(data), options)
+    data.shift()
+  }
+  if (options.shiftFirstRow) { data.shift() }
+  props.rows = getRows(cloneArray(data), options)
+  if (options.dropLastRow) { props.rows.pop() }
+  props.csv = props.header ? [ props.header.join(options.separator) ] : []
+  props.rules = options.rules
+
+  return props
 }
 
 function getHeader(data, options) {

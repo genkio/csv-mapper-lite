@@ -1,6 +1,6 @@
 {
   "name": "csv-mapper-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node.js library for parsing and mapping csv string into pre-defined format.",
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ignore-path .gitignore **/*.js",
