@@ -1,7 +1,9 @@
 # csv-mapper-lite
 
+![build](https://img.shields.io/circleci/project/github/j1wu/csv-mapper-lite.svg?style=flat-square)
 [![node6.10.1](https://img.shields.io/badge/node-6.10.1-green.svg?style=flat-square)](https://nodejs.org/en/blog/release/v0.6.10/)
 [![](https://img.shields.io/badge/ava-0.19.1-green.svg?style=flat-square)](https://github.com/avajs/ava)
+[![npm](https://img.shields.io/npm/v/csv-mapper-lite.svg?style=flat-square)](https://www.npmjs.com/package/csv-mapper-lite)
 
 A node.js library for parsing and mapping csv string into pre-defined format.
 
