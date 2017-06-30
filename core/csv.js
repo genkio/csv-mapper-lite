@@ -17,7 +17,7 @@ module.exports = class Csv {
       const props = process(data.split(options.newLine), options)
       Object.assign(this, props)
     } catch (err) {
-      throw new Error(`Failed to parse data: ${err.toString()}`)
+      throw new Error(`Failed to parse data due to : ${err.toString()}`)
     }
   }
 }

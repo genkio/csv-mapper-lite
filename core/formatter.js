@@ -55,7 +55,15 @@ function formatCell(context, rule) {
   if (!rule.expr) { return rule.defaultValue }
 
   // NOTE: embrace the dark (eval) side :P
+  // The reason I'm using eval here is that, together with closure,
+  // this is probably the most 'elegant' (less code) implementation I can come up with.
+  // Happy coding :)
+
   // eslint-disable-next-line
   const evalCellValue = function(expr) { return eval(expr) }.bind(context)
-  return evalCellValue(rule.expr) || ''
+  try {
+    return evalCellValue(rule.expr) || ''
+  } catch (err) {
+    throw new Error(`Failed to format data due to: ${err.message}`)
+  }
 }
