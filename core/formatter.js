@@ -33,7 +33,7 @@ module.exports = class Formatter extends Csv {
 function createRowContext(row) {
   let labeled = {}
   row.forEach((val, idx) => {
-    labeled[getColLabel(idx)] = cleanUpCell(val)
+    labeled[getColLabel(idx + 1)] = cleanUpCell(val)
   })
 
   return labeled
