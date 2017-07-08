@@ -1,11 +1,12 @@
 module.exports = {
-  "extends": "standard",
-  "plugins": [
-    "standard",
-    "promise"
+  parser: 'babel-eslint',
+  extends: 'standard',
+  plugins: [
+    'standard',
+    'promise'
   ],
   // add your custom rules here
-  'rules': {
+  rules: {
     // allow paren-less arrow functions
     'arrow-parens': 0,
     'no-useless-constructor': 0,

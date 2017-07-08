@@ -1,0 +1,10 @@
+[ignore]
+<PROJECT_ROOT>/lib/.*
+.*/node_modules/findup/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[options]

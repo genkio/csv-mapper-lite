@@ -1,10 +1,16 @@
+// @flow
 'use strict'
 
-module.exports.cloneArray = arr => {
+module.exports.cloneArray = (arr: Array<string>): Array<string> => {
   return [].concat(arr)
 }
 
-module.exports.getColLabel = idx => {
+/**
+ * 26 based conversion helper, which converts index based column names to alphabetical based names.
+ * Examples: 1 -> A, 2 -> B, 26 -> Z, 27 -> AA ...
+ * @param {number} idx
+ */
+module.exports.getColLabel = (idx: number): string => {
   const startAt = 64
   const base = 26
   let stack = []
