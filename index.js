@@ -1,1 +1,1 @@
-module.exports = require('./core/formatter')
+module.exports = require('./lib/core/formatter')
