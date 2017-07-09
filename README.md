@@ -1,10 +1,11 @@
 # csv-mapper-lite
 
-![build](https://img.shields.io/circleci/project/github/j1wu/csv-mapper-lite.svg?style=flat-square)
-[![node6.10.1](https://img.shields.io/badge/node-6.10.1-green.svg?style=flat-square)](https://nodejs.org/en/blog/release/v0.6.10/)
-[![](https://img.shields.io/badge/ava-0.19.1-green.svg?style=flat-square)](https://github.com/avajs/ava)
-[![](https://img.shields.io/badge/flow-0.49.1-green.svg?style=flat-square)](https://github.com/facebook/flow)
-[![npm](https://img.shields.io/npm/v/csv-mapper-lite.svg?style=flat-square)](https://www.npmjs.com/package/csv-mapper-lite)
+![build](https://img.shields.io/circleci/project/github/j1wu/csv-mapper-lite.svg)
+[![Coverage Status](https://coveralls.io/repos/github/j1wu/csv-mapper-lite/badge.svg?branch=master)](https://coveralls.io/github/j1wu/csv-mapper-lite?branch=master)
+[![node6.10.1](https://img.shields.io/badge/node-6.10.1-green.svg)](https://nodejs.org/en/blog/release/v0.6.10/)
+[![](https://img.shields.io/badge/ava-0.19.1-green.svg)](https://github.com/avajs/ava)
+[![](https://img.shields.io/badge/flow-0.49.1-green.svg)](https://github.com/facebook/flow)
+[![npm](https://img.shields.io/npm/v/csv-mapper-lite.svg)](https://www.npmjs.com/package/csv-mapper-lite)
 
 A node.js library for parsing and mapping csv string into pre-defined format.
 
