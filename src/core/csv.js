@@ -15,7 +15,7 @@ module.exports = class Csv {
 
     options = Object.assign({}, DEFAULT_OPTIONS, options)
     try {
-      const props = createProps(data.split(options.newLine), options)
+      const props = createProps(data, options)
       Object.assign(this, props)
     } catch (err) {
       throw new Error(`Failed to parse data due to : ${err.toString()}`)
@@ -23,15 +23,21 @@ module.exports = class Csv {
   }
 }
 
-function createProps(data: Array<string>, options: Object): Object {
+function createProps(data: string, options: Object): Object {
   let props = { }
 
-  if (!options.noHeader) {
-    props.header = getHeader(cloneArray(data), options)
-    data.shift()
+  const isDifferentNewLineSym = !data.match(new RegExp(options.newLine.default))
+  if (isDifferentNewLineSym) {
+    data = data.replace(new RegExp(options.newLine.mac, 'g'), options.newLine.default)
   }
-  if (options.shiftFirstRow) { data.shift() }
-  props.rows = getRows(cloneArray(data), options)
+  const arr = data.split(options.newLine.default)
+
+  if (!options.noHeader) {
+    props.header = getHeader(cloneArray(arr), options)
+    arr.shift()
+  }
+  if (options.shiftFirstRow) { arr.shift() }
+  props.rows = getRows(cloneArray(arr), options)
   if (options.dropLastRow) { props.rows.pop() }
   props.csv = props.header ? [ props.header.join(options.separator) ] : []
   props.rules = options.rules

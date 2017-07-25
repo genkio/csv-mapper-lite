@@ -5,6 +5,8 @@ const Csv = require('../core/csv')
 const mockCsvData = 'col1,,col2,col3,,\n,1,2,3,,,\n'
 const mockCsvDataWithoutHeader = '1,2,3\n'
 const mockCsvDataWithEmptyRows = 'col1,col2,col3,\n,,\n1,,2,3\n,,\n,,\n,,'
+const mockCsvDataWithMacNewLine = 'col1,,col2,col3,,\r,1,2,3,,,\r'
+const mockCsvDataWithWindowsNewLine = 'col1,,col2,col3,,\r\n,1,2,3,,,\r\n'
 
 test('it should throw error if there is no data passed in', t => {
   t.throws(() => {
@@ -54,4 +56,14 @@ test('it should trim trailing empty cells in rows if trimTrailing is set to true
 test('it should last row if dropLastRow option is set to true', t => {
   const csv = new Csv(mockCsvDataWithEmptyRows, { dropLastRow: true })
   t.is(csv.rows.length, 0)
+})
+
+test('it should split rows when encounting mac newline symbol', t => {
+  const csv = new Csv(mockCsvDataWithMacNewLine)
+  t.is(csv.rows.length, 1)
+})
+
+test('it should split rows when encounting windows newline symbol', t => {
+  const csv = new Csv(mockCsvDataWithWindowsNewLine)
+  t.is(csv.rows.length, 1)
 })
