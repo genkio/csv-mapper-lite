@@ -11,5 +11,6 @@ module.exports.DEFAULT_OPTIONS = {
   shiftFirstRow: false,
   rules: {},
   trimTrailing: false,
-  dropLastRow: false
+  dropLastRow: false,
+  dropRow: ''
 }

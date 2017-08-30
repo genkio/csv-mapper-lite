@@ -40,6 +40,7 @@ function createProps(data: string, options: Object): Object {
   props.rows = getRows(cloneArray(arr), options)
   if (options.dropLastRow) { props.rows.pop() }
   props.csv = props.header ? [ props.header.join(options.separator) ] : []
+  props.options = options
   props.rules = options.rules
 
   return props

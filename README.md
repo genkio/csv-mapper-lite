@@ -48,7 +48,8 @@ const formatter = new Formatter(csvStr, {
   noHeader: false,
   shiftFirstRow: false,
   trimTrailing: false,
-  dropLastRow: false
+  dropLastRow: false,
+  dropRow: '' // accepts an expression string which will be evaluated during formatting, if evaluation result returns true, current row will be dropped.
 })
 
 const output = formatter.process()

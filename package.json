@@ -1,12 +1,12 @@
 {
   "name": "csv-mapper-lite",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A node.js library for parsing and mapping csv string into pre-defined format.",
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js src/**/*.js",
     "test": "yarn lint && ./node_modules/.bin/flow && ./node_modules/nyc/bin/nyc.js ./node_modules/.bin/ava test ./src/test/*_spec.js",
     "test:report": "./node_modules/.bin/flow && ./node_modules/nyc/bin/nyc.js report --reporter=html",
-    "test:debug": "node --inspect --debug-brk ./node_modules/ava/profile.js ./src/test/csv_spec.js",
+    "test:debug": "node --inspect --debug-brk ./node_modules/ava/profile.js ./src/test/formatter_spec.js",
     "test:watch": "yarn test -- --watch",
     "build": "yarn build:clean && yarn build:lib && yarn build:flow",
     "build:clean": "rimraf lib",
